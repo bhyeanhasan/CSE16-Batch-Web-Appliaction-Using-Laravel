@@ -12,12 +12,12 @@
     @guest
         <h1>Its seems you are not a cseian, so you can't post a notice</h1>
     @else
-        <form action={{route('notice_post')}} method="post">
+        <form action={{route('notice_post')}} method="post" enctype="multipart/form-data">
             @csrf
             <input type="text" name="heading" placeholder="Tittle"> <br> <br>
             <textarea type="text" name="body" placeholder="Body"></textarea> <br><br>
             <input type="text" name="link" placeholder="Link"> <br><br>
-            <input type="text" name="image"> <br><br>
+            <input type="file" name="image"> <br><br>
             <input type="submit">
         </form>
     @endif

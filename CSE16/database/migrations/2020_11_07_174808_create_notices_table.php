@@ -11,6 +11,7 @@ class CreateNoticesTable extends Migration
     {
         Schema::create('notices', function (Blueprint $table) {
             $table->id();
+            $table->string('notice_by');
             $table->string('notice_heading');
             $table->string('notice_body');
             $table->string('notice_link');
