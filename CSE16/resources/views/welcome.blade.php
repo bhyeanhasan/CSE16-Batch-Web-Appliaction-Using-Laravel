@@ -20,12 +20,18 @@
             }
         </style>
     </head>
+
+
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
                         <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
+                        <h2>{{ Auth::user()->name }}</h2>
+                        <h2>{{ Auth::user()->email }}</h2>
+                        <a href= {{ route('logout') }}>Logout</a>
+{{--                        <a href="{{ Auth::logout() }}" class="text-sm text-gray-700 underline">Logout</a>--}}
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
 
@@ -33,6 +39,10 @@
                             <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
                         @endif
                     @endif
+                </div>
+
+                <div>
+                    <a href="{{route('student')}}">student</a>
                 </div>
             @endif
 
@@ -128,5 +138,23 @@
                 </div>
             </div>
         </div>
+
+        <!-- Put this code anywhere in the body of your page where you want the badge to show up. -->
+
+        <div itemscope itemtype='http://schema.org/Person' class='fiverr-seller-widget' style='display: inline-block;'>
+            <a itemprop='url' href=https://www.fiverr.com/b_h_yean_hasan rel="nofollow" target="_blank" style='display: inline-block;'>
+                <div class='fiverr-seller-content' id='fiverr-seller-widget-content-587c7bf9-28f3-4841-8617-9605f0fc78d6' itemprop='contentURL' style='display: none;'></div>
+                <div id='fiverr-widget-seller-data' style='display: none;'>
+                    <div itemprop='name' >b_h_yean_hasan</div>
+                    <div itemscope itemtype='http://schema.org/Organization'><span itemprop='name'>Fiverr</span></div>
+                    <div itemprop='jobtitle'>Seller</div>
+                    <div itemprop='description'>Hello, I'm Yean Hasan, I'm a student of computer science. I'm expert in Desktop application (C#, JavaFX, Java Swing), Web development (Django Framework), Web designing (HTML, Bootstrap, CSS, JavaScript) with responsive design.</div>
+                </div>
+            </a>
+        </div>
+
+
+        <script id='fiverr-seller-widget-script-587c7bf9-28f3-4841-8617-9605f0fc78d6' src='https://widgets.fiverr.com/api/v1/seller/b_h_yean_hasan?widget_id=587c7bf9-28f3-4841-8617-9605f0fc78d6' data-config='{"category_name":"Programming \u0026 Tech"}' async='true' defer='true'></script>
+
     </body>
 </html>

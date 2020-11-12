@@ -13,6 +13,7 @@ class Student extends Model
         'roll',
         'reg',
         'phone',
+        'email',
         'address',
         'blood_group',
         'birth_date',

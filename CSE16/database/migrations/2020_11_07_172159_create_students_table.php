@@ -14,6 +14,7 @@ class CreateStudentsTable extends Migration
             $table->string('roll');
             $table->string('reg');
             $table->string('phone');
+            $table->string('email');
             $table->string('address');
             $table->string('blood_group');
             $table->date('birth_date');
