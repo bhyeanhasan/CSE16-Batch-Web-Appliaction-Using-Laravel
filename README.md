@@ -1,2 +1,2 @@
-# CSE16 Batch Web App using Laravel
+# CSE16 Batch Web App
  CSE 16
