@@ -1,0 +1,29 @@
+body{
+    background: #fff;
+    font-family: 'Verdana', sans-serif;
+    color:#000;
+}
+.date_news {
+    display: block;
+    float: left;
+    margin: 2px  5px 2px 2px;
+    text-align: center;
+    background: #156748;
+    border-radius: 5px;
+    padding: 3px 6px;
+    color: #fff;
+}
+.date_news h6{
+    font-size: 14px;
+}
+.media h6{
+    font-size: 14px;
+}
+
+.more {
+    float: right;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+

@@ -3,6 +3,7 @@
 # Ei controller sudhu view return korbe ,just ek page theke arek page e jaoar ulr mapping
 
 namespace App\Http\Controllers;
+use App\Models\Notice;
 use Illuminate\Http\Request;
 
 class PageRoute extends Controller
@@ -11,7 +12,8 @@ class PageRoute extends Controller
 
     function welcome_page()
     {
-        return view('welcome');
+        $all_notice = Notice::all();
+        return view('welcome',compact('all_notice'));
     }
     function about_page()
     {
@@ -23,7 +25,7 @@ class PageRoute extends Controller
     }
     function add_notice_page()
     {
-        return view('add_notice');
+        return view('notice.add_notice');
     }
 
 

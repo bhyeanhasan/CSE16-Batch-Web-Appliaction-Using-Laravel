@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Redirect;
 
 class ManageNotice extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     function post_notice(Request $request)
     {
         #Html er maddhome pathano image ta nilam
@@ -60,7 +64,7 @@ class ManageNotice extends Controller
     function view_all_notice()
     {
         $all_notice = Notice::all();
-        return view('notice',compact('all_notice'));
+        return view('notice.notice',compact('all_notice'));
     }
 
 }

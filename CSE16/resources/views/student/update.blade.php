@@ -11,8 +11,6 @@
 
 <form action={{route('student_edit')}} method="post" enctype="multipart/form-data">
     @csrf
-
-
         <input type="text" name="name" value="{{ Auth::user()->name }}"> <br> <br>
         <input type="text" name="roll" value="{{ $student->roll }}"> <br> <br>
         <input type="text" name="reg" value="{{ $student->reg }}"> <br> <br>
@@ -21,8 +19,17 @@
         <input type="text" name="blood_group" value="{{$student->blood_group}}"> <br> <br>
         <input type="date" name="birth_date" value="{{ $student->birth_date }}"> <br> <br>
         <input type="text" name="bio" value="{{ $student->bio }}"> <br> <br>
-        <input type="submit">
+        <input type="submit"> <br> <br>
 </form>
 
+
+<div>
+    <form action={{route('student_pic')}} method="post" enctype="multipart/form-data">
+        @csrf
+        <input type="file" name="profile_pic" > <br> <br>
+        <input type="file" name="cover_pic" > <br> <br>
+        <input type="submit">
+    </form>
+</div>
 </body>
 </html>

@@ -10,6 +10,11 @@ use DB;
 
 class ManageStudent extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     function profile_check()
     {
         # age check kore dekhbe user tar profile create korce kina , ekhane email ke primary dhorci
@@ -30,26 +35,26 @@ class ManageStudent extends Controller
     function student_create(Request $request)
     {
         # actual file jeta html er maddhom e asbe
-        $student_profile_pic                 = $request->file('profile_pic');
-        $student_cover_pic                   = $request->file('cover_pic');
+        $student_profile_pic            = $request->file('profile_pic');
+        $student_cover_pic              = $request->file('cover_pic');
 
         # uniqe korar jonno
-        $student_name_generated             = hexdec(uniqid());
+        $student_name_generated         = hexdec(uniqid());
 
         # extention paoar jonno
-        $student_profile_extention            = $request->file('profile_pic')->extension();
-        $student_cover_extention            = $request->file('cover_pic')->extension();
+        $student_profile_extention      = $request->file('profile_pic')->extension();
+        $student_cover_extention        = $request->file('cover_pic')->extension();
 
         # Jekhane pic save hobe
-        $student_image_path                 = 'image/student/';
+        $student_image_path             = 'image/student/';
 
         #notun je nam hobe
-        $student_profile_name               = "profile".$student_name_generated.$student_profile_extention;
-        $student_cover_name                 = "cover".$student_name_generated.$student_cover_extention;
+        $student_profile_name           = $student_name_generated."profile.".$student_profile_extention;
+        $student_cover_name             = $student_name_generated."cover.".$student_cover_extention;
 
         #database e je nam e save hobe, path soho
-        $student_profile_database_name      = $student_image_path.$student_profile_name;
-        $student_cover_database_name        = $student_image_path.$student_cover_name;
+        $student_profile_database_name  = $student_image_path.$student_profile_name;
+        $student_cover_database_name    = $student_image_path.$student_cover_name;
 
         #html er maddhome asa image duita directory te save korlam
         $student_profile_pic->move($student_image_path,$student_profile_name);
@@ -125,6 +130,65 @@ class ManageStudent extends Controller
             ->get()->first();
 
         return view('student.update',compact('student'));
+    }
+
+    function change_profile_cover(Request $request)
+    {
+        # actual file jeta html er maddhom e asbe
+        $student_profile_pic        = $request->file('profile_pic');
+        $student_cover_pic          = $request->file('cover_pic');
+
+        # uniqe korar jonno
+        $student_name_generated     = hexdec(uniqid());
+
+        # Jekhane pic save hobe
+        $student_image_path         = 'image/student/';
+
+        #jodi profile pic chnage kora hy
+        if($student_profile_pic)
+        {
+            $student_profile_extention          = $request->file('profile_pic')->extension();
+            $student_profile_name               = $student_name_generated."profile.".$student_profile_extention;
+            $student_profile_database_name      = $student_image_path.$student_profile_name;
+
+            $student_profile_pic->move($student_image_path,$student_profile_name);
+
+            $old_profile_pic = DB::table('students')
+                ->where('students.email','=', Auth::user()->email)
+                ->select('profile_pic')
+                ->get()->first();
+
+            unlink($old_profile_pic->profile_pic);
+
+            $student_pictures = DB::table('students')
+                ->where('students.email','=', Auth::user()->email)
+                ->update([
+                        'profile_pic'              =>  $student_profile_database_name,
+                ]);
+        }
+
+        #jodi cover pic change kora hy
+        if($student_cover_pic)
+        {
+            $student_cover_extention        = $request->file('cover_pic')->extension();
+            $student_cover_name             = $student_name_generated."cover.".$student_cover_extention;
+            $student_cover_database_name    = $student_image_path.$student_cover_name;
+
+            $student_cover_pic->move($student_image_path,$student_cover_name);
+
+            $old_cover_pic = DB::table('students')
+                ->where('students.email','=', Auth::user()->email)
+                ->select('cover_pic')
+                ->get()->first();
+
+            unlink($old_cover_pic->cover_pic);
+
+            $student_pictures = DB::table('students')
+                ->where('students.email','=', Auth::user()->email)
+                ->update([
+                    'cover_pic'              =>  $student_cover_database_name,
+                ]);
+        }
     }
 
 }
