@@ -11,16 +11,24 @@ class ManageNotice extends Controller
 {
     function post_notice(Request $request)
     {
-
+        #Html er maddhome pathano image ta nilam
         $notice_image                   = $request->file('image');
+
+        #ekta uniqe nam rakhlam
         $notice_image_name_generated    = hexdec(uniqid());
+        #extention ta nilam
         $notice_image_extention         = $request->file('image')->extension();
+        #new nam dilam
         $notice_image_name              = $notice_image_name_generated.$notice_image_extention;
+        #notice er jonno image jekhane rakhte chai
         $notice_image_path              = 'image/notice/';
+        #database e pathsoho rakhbo tai
         $notice_image_database_name     = $notice_image_path.$notice_image_name;
 
+        #image ta age save korte hobe
         $notice_image->move($notice_image_path,$notice_image_name);
 
+        #valugula ar image path+name save korlam
         $Notice_data = Notice::insert([
             'notice_by'         => Auth::id(),
             'notice_heading'    => $request->heading,
@@ -38,8 +46,14 @@ class ManageNotice extends Controller
     function delete_notice($id)
     {
         $notice = Notice::find($id);
+
+        #database theke age notice er picture er nam ta nilam
         $img = $notice->notice_picture;
+
+        #age picture ta project theke delete korlam
         unlink($img);
+
+        #ebar database theke information gula erase kore dilam
         $notice->delete();
         return Redirect()->back();
     }

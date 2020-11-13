@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class PageRoute extends Controller
 {
+    #ei controller muloto ek page theke arek page e jaoata control korbe, kno functionality rakhte chai na
 
     function welcome_page()
     {
@@ -24,5 +25,6 @@ class PageRoute extends Controller
     {
         return view('add_notice');
     }
+
 
 }
