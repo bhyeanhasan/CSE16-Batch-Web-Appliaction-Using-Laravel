@@ -14,8 +14,8 @@ class CreateNoticesTable extends Migration
             $table->string('notice_by');
             $table->string('notice_heading');
             $table->string('notice_body');
-            $table->string('notice_link');
-            $table->string('notice_picture');
+            $table->string('notice_link')->nullable();
+            $table->string('notice_picture')->nullable();
             $table->timestamps();
         });
     }

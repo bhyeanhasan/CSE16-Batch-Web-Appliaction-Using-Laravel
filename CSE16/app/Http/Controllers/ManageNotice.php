@@ -9,10 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class ManageNotice extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+
     function post_notice(Request $request)
     {
         #Html er maddhome pathano image ta nilam

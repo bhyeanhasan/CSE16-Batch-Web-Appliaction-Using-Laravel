@@ -17,15 +17,19 @@ class PageRoute extends Controller
     }
     function about_page()
     {
-        return view('about');
+        return view('pages.about');
     }
     function contact_page()
     {
-        return view('contact');
+        return view('pages.contact');
     }
     function add_notice_page()
     {
         return view('notice.add_notice');
+    }
+    function post_page()
+    {
+        return view('blog_post.create_post');
     }
 
 
