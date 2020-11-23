@@ -10,14 +10,21 @@
 <body>
 
 {{---------------------------------------------------------------------}}
-    @foreach($all_notice as $notice)
-        <h3>{{$notice->notice_heading}}</h3><br>
-        <h5>{{$notice->notice_body}}</h5><br>
-        <a href="{{url($notice->notice_link)}}" target="_blank"> LINK</a><br>
-        <img src="{{$notice->notice_picture}}" height="100px" width="100px">
-        <a href={{ url('notice/delete/'.$notice->id) }}>Delete</a>
-        <br><br><br>
-    @endforeach
+@foreach($all_notice as $notice)
+    <div class="media">
+        <div class="date_news" style="width: 80px;">
+            <h6>{{$notice->created_at}}</h6>
+        </div>
+        <h6 style="margin-top: auto;margin-bottom: auto"><a href="#"> {{ $notice->notice_heading }} </a></h6>
+    </div>
+@endforeach
+
+
+<div class="media">
+
+        <h1>{{$notice_main->created_at}}</h1>
+    <h5 style="margin-top: auto;margin-bottom: auto"><a href="#"> {{ $notice_main->notice_heading }} </a></h5>
+</div>
 {{---------------------------------------------------------------------}}
 
 

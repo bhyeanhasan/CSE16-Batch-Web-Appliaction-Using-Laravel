@@ -5,6 +5,7 @@
 namespace App\Http\Controllers;
 use App\Models\Notice;
 use Illuminate\Http\Request;
+use DB;
 
 class PageRoute extends Controller
 {
@@ -13,7 +14,13 @@ class PageRoute extends Controller
     function welcome_page()
     {
         $all_notice = Notice::all();
-        return view('welcome',compact('all_notice'));
+
+        $student_all_information = DB::table('students')
+            ->join('users','students.email','users.email')
+            ->select('students.*','users.*')
+            ->get();
+
+        return view('welcome',compact('all_notice','student_all_information'));
     }
     function about_page()
     {

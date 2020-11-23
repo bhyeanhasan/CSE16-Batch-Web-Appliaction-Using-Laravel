@@ -25,7 +25,7 @@ Route::post('student_pic/edit',[ManageStudent::class,'change_profile_cover'])->n
 Route::post('create_post',[ManagePost::class,'create_post'])->name('create_post');
 
 #database theke kno moddel er sob element view korbe
-Route::get('view_notice',[ManageNotice::class,'view_all_notice'])->name('view_notice');
+Route::get('view_notice/{id}',[ManageNotice::class,'view_all_notice']);
 Route::get('/view/post',[ManagePost::class,'view_all_post'])->name('view_post');
 
 #Database theke kicu delete korbe

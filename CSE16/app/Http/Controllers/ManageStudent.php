@@ -10,20 +10,20 @@ use DB;
 
 class ManageStudent extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+//    public function __construct()
+//    {
+//        $this->middleware('auth');
+//    }
 
     function profile_check()
     {
         # age check kore dekhbe user tar profile create korce kina , ekhane email ke primary dhorci
-        $profile = Student::select('*')->where('email',Auth::user()->email)->first();
+        $student = Student::select('*')->where('email',Auth::user()->email)->first();
 
         #user age student profile crate kore thakle direct tar profile e nia jabe
-        if($profile != null)
+        if($student != null)
         {
-            return view('student.profile',compact('profile'));
+            return view('student.public_profile',compact('student'));
         }
         #Profile create na korle profile create er page e nia jabe
         else
@@ -92,13 +92,13 @@ class ManageStudent extends Controller
     function public_profile($roll)
     {
         #Join two table with condition
-        $student_all_information = DB::table('students')
+        $students = DB::table('students')
             ->join('users','students.email','users.email')
             ->where('students.roll','=',$roll)
             ->select('students.*','users.*')
             ->get();
 
-        return view('student.public_profile',compact('student_all_information'));
+        return view('student.profile',compact('students'));
 
     }
 
@@ -118,7 +118,7 @@ class ManageStudent extends Controller
                 'students.bio'              =>  $request->bio,
             ]);
 
-        redirect(back());
+        return redirect()->route('student');
     }
 
     function student_update_page()
@@ -189,6 +189,8 @@ class ManageStudent extends Controller
                     'cover_pic'              =>  $student_cover_database_name,
                 ]);
         }
+
+        return redirect()->route('student');
     }
 
 }
