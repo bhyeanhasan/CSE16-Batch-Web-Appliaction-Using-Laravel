@@ -6,10 +6,14 @@
         <marquee direction="up" height="350" onmouseover="this.stop()" onmouseout="this.start()" scrollamount="2">
 
 
-
-
-
-
+            @foreach($all_notice as $notice)
+                <div class="media">
+                    <div class="date_news" style="width: 80px;">
+                        <h6>{{$notice->created_at}}</h6>
+                    </div>
+                    <h6 style="margin-top: auto;margin-bottom: auto"><a href="#"> {{ $notice->notice_heading }} </a></h6>
+                </div>
+            @endforeach
 
 
         </marquee>

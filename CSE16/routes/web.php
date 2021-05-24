@@ -28,7 +28,11 @@ Route::post('create_post',[ManagePost::class,'create_post'])->name('create_post'
 
 #database theke kno moddel er sob element view korbe
 <<<<<<< HEAD
+<<<<<<< HEAD
 Route::get('view_notice/{id}',[ManageNotice::class,'view_all_notice']);
+=======
+Route::get('view_notice',[ManageNotice::class,'view_all_notice'])->name('view_notice');
+>>>>>>> parent of 3214e23 (last w8)
 Route::get('/view/post',[ManagePost::class,'view_all_post'])->name('view_post');
 
 #Database theke kicu delete korbe

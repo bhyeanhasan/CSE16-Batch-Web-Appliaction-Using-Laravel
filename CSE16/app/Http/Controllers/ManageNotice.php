@@ -44,7 +44,6 @@ class ManageNotice extends Controller
     {
 
     }
-
     function delete_notice($id)
     {
         $notice = Notice::find($id);
@@ -59,14 +58,10 @@ class ManageNotice extends Controller
         $notice->delete();
         return Redirect()->back();
     }
-
-
-
-    function view_all_notice($id)
+    function view_all_notice()
     {
-        $notice_main    =   Notice::find($id);
         $all_notice = Notice::all();
-        return view('notice.notice')->with("all_notice",$all_notice)->with("notice_main",$notice_main);
+        return view('notice.notice',compact('all_notice'));
     }
 
 }
