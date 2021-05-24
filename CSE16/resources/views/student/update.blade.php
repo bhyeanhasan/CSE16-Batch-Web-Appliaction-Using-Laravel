@@ -114,6 +114,7 @@
 
 
 
+<<<<<<< HEAD
 
                         </div>
 
@@ -162,6 +163,22 @@
 <script src="{{asset("vendor/datepicker/moment.min.js")}}"></script>
 <script src="{{asset("vendor/datepicker/daterangepicker.js")}}"></script>
 <script src="{{asset("js/global.js")}}"></script>
+=======
+<form action={{route('student_edit')}} method="post" enctype="multipart/form-data">
+    @csrf
+
+
+        <input type="text" name="name" value="{{ Auth::user()->name }}"> <br> <br>
+        <input type="text" name="roll" value="{{ $student->roll }}"> <br> <br>
+        <input type="text" name="reg" value="{{ $student->reg }}"> <br> <br>
+        <input type="text" name="phone" value="{{ $student->phone }}"> <br> <br>
+        <input type="text" name="address" value="{{$student->address}}"> <br> <br>
+        <input type="text" name="blood_group" value="{{$student->blood_group}}"> <br> <br>
+        <input type="date" name="birth_date" value="{{ $student->birth_date }}"> <br> <br>
+        <input type="text" name="bio" value="{{ $student->bio }}"> <br> <br>
+        <input type="submit">
+</form>
+>>>>>>> parent of b8a90bb (view)
 
 </body>
 </html>

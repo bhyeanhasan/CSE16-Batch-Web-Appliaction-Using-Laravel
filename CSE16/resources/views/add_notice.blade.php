@@ -25,7 +25,7 @@
 </body>
 </html>
 <script>
-    import Input from "../../js/Jetstream/Input";
+    import Input from "../js/Jetstream/Input";
     export default {
         components: {Input}
     }
