@@ -3,6 +3,7 @@
 # Ei controller sudhu view return korbe ,just ek page theke arek page e jaoar ulr mapping
 
 namespace App\Http\Controllers;
+use App\Models\Notice;
 use Illuminate\Http\Request;
 use DB;
 
@@ -12,7 +13,6 @@ class PageRoute extends Controller
 
     function welcome_page()
     {
-<<<<<<< HEAD
         $all_notice = Notice::all();
 
         $student_all_information = DB::table('students')
@@ -21,9 +21,6 @@ class PageRoute extends Controller
             ->get();
 
         return view('welcome',compact('all_notice','student_all_information'));
-=======
-        return view('welcome');
->>>>>>> parent of b8a90bb (view)
     }
     function about_page()
     {
@@ -35,7 +32,7 @@ class PageRoute extends Controller
     }
     function add_notice_page()
     {
-        return view('add_notice');
+        return view('notice.add_notice');
     }
     function post_page()
     {

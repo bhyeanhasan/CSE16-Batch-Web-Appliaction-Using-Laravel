@@ -9,10 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class ManageNotice extends Controller
 {
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of b8a90bb (view)
     function post_notice(Request $request)
     {
         #Html er maddhome pathano image ta nilam
@@ -69,11 +66,7 @@ class ManageNotice extends Controller
     {
         $notice_main    =   Notice::find($id);
         $all_notice = Notice::all();
-<<<<<<< HEAD
         return view('notice.notice')->with("all_notice",$all_notice)->with("notice_main",$notice_main);
-=======
-        return view('notice',compact('all_notice'));
->>>>>>> parent of b8a90bb (view)
     }
 
 }
