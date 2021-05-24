@@ -57,6 +57,7 @@
                                 <h4 class="py-2"><i class="fa fa-handshake-o" aria-hidden="true"></i> Blood Group		: {{ $student->blood_group }}  </h4>
                                 <h4 class="py-2"><i class="fa fa-birthday-cake" aria-hidden="true"></i> Birth Day		: {{ $student->birth_date }}  </h4>
 
+<<<<<<< HEAD
                                 <div class="col-md-12 text-center my-3">
                                     <a href="/student_page/update" type="button" class="btn btn-danger" >Update Profile</a>
                                 </div>
@@ -97,6 +98,13 @@
 <script src="{{asset("vendor/datepicker/moment.min.js")}}"></script>
 <script src="{{asset("vendor/datepicker/daterangepicker.js")}}"></script>
 <script src="{{asset("js/global.js")}}"></script>
+=======
+@foreach($student_all_information as $student)
+    <h3>{{ $student->email }}</h3>
+    <h3>{{ $student->roll }}</h3>
+    <h3>{{ $student->address }}</h3>
+@endforeach
+>>>>>>> parent of 053087f (post advance)
 
 </body>
 </html>

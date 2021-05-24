@@ -3,14 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\blog_post;
-use App\Models\Notice;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ManagePost extends Controller
 {
-
     function create_post(Request $request)
     {
         $pictures_data              = array();
@@ -45,27 +43,4 @@ class ManagePost extends Controller
         return back()->with('SuccessFull');
 
     }
-
-    function view_all_post()
-    {
-        $posts = blog_post::all();
-        return view('blog_post.posts',compact('posts'));
-    }
-
-    function delete_post($id)
-    {
-
-        $post =blog_post::find($id);
-
-        foreach(explode('|',$post->post_pictures) as $picture)
-        {
-            unlink($picture);
-        }
-
-        $post->delete();
-
-        return redirect()->route('view_post');
-
-    }
-
 }
