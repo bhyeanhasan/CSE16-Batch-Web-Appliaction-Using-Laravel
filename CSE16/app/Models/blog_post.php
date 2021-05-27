@@ -11,6 +11,7 @@ class blog_post extends Model
 
     protected $fillable = [
         'posted_by',
+        'poster_email',
         'post_heading',
         'post_body',
         'post_pictures',

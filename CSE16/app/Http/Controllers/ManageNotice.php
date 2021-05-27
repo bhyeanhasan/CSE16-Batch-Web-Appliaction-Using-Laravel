@@ -6,44 +6,46 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use DB;
 
 class ManageNotice extends Controller
 {
 
     function post_notice(Request $request)
     {
-        #Html er maddhome pathano image ta nilam
-        $notice_image                   = $request->file('image');
 
-        #ekta uniqe nam rakhlam
-        $notice_image_name_generated    = hexdec(uniqid());
-        #extention ta nilam
-        $notice_image_extention         = $request->file('image')->extension();
-        #new nam dilam
-        $notice_image_name              = $notice_image_name_generated.$notice_image_extention;
-        #notice er jonno image jekhane rakhte chai
-        $notice_image_path              = 'image/notice/';
-        #database e pathsoho rakhbo tai
-        $notice_image_database_name     = $notice_image_path.$notice_image_name;
+        $pictures_data              = array();
 
-        #image ta age save korte hobe
-        $notice_image->move($notice_image_path,$notice_image_name);
+        #kno image deoa hoice kina check korbe
+        if($request->hasFile('image'))
+        {
+            $post_image_name_generated  = hexdec(uniqid());
+            $post_image_path            = 'image/notice/';
+            $num                        = 0;
+
+            #ekadhik image er jonno protita save korebo
+            foreach ($request->file('image') as $picture)
+            {
+                $picture_name       = $post_image_name_generated.$num.".".$picture->extension();
+                $picture_database   = $post_image_path.$picture_name;
+                $pictures_data []   = $picture_database;        #image gula array te rakhbo
+                $num                = $num+1;
+                $picture->move($post_image_path,$picture_name);
+            }
+        }
 
         #valugula ar image path+name save korlam
         $Notice_data = Notice::insert([
-            'notice_by'         => Auth::id(),
+            'notice_by'         => Auth::user()->email,
             'notice_heading'    => $request->heading,
             'notice_body'       => $request->body,
-            'notice_link'       => $request->link,
-            'notice_picture'    => $notice_image_database_name,
+            'notice_picture'    => implode("|",$pictures_data),
             'created_at'        => Carbon::now(),
         ]);
-
+        return back();
     }
-    function update_notice()
-    {
 
-    }
+
     function delete_notice($id)
     {
         $notice = Notice::find($id);
@@ -52,16 +54,59 @@ class ManageNotice extends Controller
         $img = $notice->notice_picture;
 
         #age picture ta project theke delete korlam
-        unlink($img);
+
+        if (file_exists($img) )
+        {
+            unlink($img);
+        }
 
         #ebar database theke information gula erase kore dilam
         $notice->delete();
         return Redirect()->back();
     }
-    function view_all_notice()
+
+    function link($id)
     {
-        $all_notice = Notice::all();
-        return view('notice.notice',compact('all_notice'));
+        $link = Notice::find($id);
+        $go =$link->notice_link;
+
+        if($go != null)
+        {
+            return Redirect::away($go);
+        }
+
+    }
+
+    function view_all_notice($id)
+    {
+//      jeta dekhabo samne
+//        $notice_main    =   Notice::find($id);
+        $notice_main = null;
+
+        if($id != 0)
+        {
+            $notice_main = DB::table('notices')
+                ->join('students','notices.notice_by','=','students.email')
+                ->join('users','notices.notice_by','=','users.email')
+                ->select('notices.*','students.profile_pic','students.roll','users.name')
+                ->where('notices.id',$id)
+                ->get()->first();
+        }
+
+
+
+//      Sobgula Notice
+//        $all_notice = Notice::all();
+
+        $all_notice = DB::table('notices')
+            ->join('students','notices.notice_by','=','students.email')
+            ->join('users','notices.notice_by','=','users.email')
+            ->select('notices.*','students.profile_pic','students.roll','users.name')
+            ->get();
+
+            return view('notice.notice')->with("all_notice",$all_notice)->with("notice_main",$notice_main);
+
+
     }
 
 }

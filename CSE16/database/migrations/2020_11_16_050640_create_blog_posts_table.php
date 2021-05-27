@@ -12,9 +12,10 @@ class CreateBlogPostsTable extends Migration
         Schema::create('blog_posts', function (Blueprint $table) {
             $table->id();
             $table->string('posted_by');
+            $table->string('poster_email');
             $table->string('post_heading');
-            $table->string('post_body');
-            $table->string('post_pictures')->nullable();
+            $table->text('post_body');
+            $table->text('post_pictures')->nullable();
             $table->timestamps();
         });
     }

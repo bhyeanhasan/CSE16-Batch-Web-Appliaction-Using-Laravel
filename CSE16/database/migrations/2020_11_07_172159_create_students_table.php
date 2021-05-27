@@ -13,14 +13,14 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->string('roll');
             $table->string('reg');
-            $table->string('phone');
+            $table->string('phone')->nullable();
             $table->string('email');
-            $table->string('address');
-            $table->string('blood_group');
-            $table->date('birth_date');
-            $table->string('bio');
-            $table->string('profile_pic');
-            $table->string('cover_pic');
+            $table->string('address')->nullable();
+            $table->string('blood_group')->nullable();
+            $table->date('birth_date')->nullable();
+            $table->string('bio')->nullable();
+            $table->text('profile_pic')->nullable();
+            $table->text('cover_pic')->nullable();
             $table->timestamps();
         });
     }

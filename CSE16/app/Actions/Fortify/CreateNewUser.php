@@ -11,19 +11,36 @@ class CreateNewUser implements CreatesNewUsers
 {
     use PasswordValidationRules;
 
-    /**
-     * Validate and create a newly registered user.
-     *
-     * @param  array  $input
-     * @return \App\Models\User
-     */
+
     public function create(array $input)
     {
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users',
+                function ($attribute, $value, $fail)
+                {
+                    if (strpos($value, "@cse.pstu.ac.bd") == false) {
+                        $fail($attribute.' is not belong with cse faculty.');
+                    }
+                },
+            ],
             'password' => $this->passwordRules(),
         ])->validate();
+
+//        $this->validate($input,[
+//            'email' => ['required', 'string', 'email', 'max:255', 'unique:users',
+//                function ($attribute, $value, $fail)
+//                {
+//                    if (strpos($value, "@cse.pstu.ac.bd") == false) {
+//                        $fail($attribute.' is not belong with cse faculty.');
+//                    }
+//                },
+//            ],
+//
+//            'name'           =>  ['required', 'string', 'max:255'],
+//            'password'         =>  $this->passwordRules(),
+//
+//        ]);
 
         return User::create([
             'name' => $input['name'],

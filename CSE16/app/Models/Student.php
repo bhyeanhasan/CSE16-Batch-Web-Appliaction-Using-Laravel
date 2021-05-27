@@ -9,6 +9,7 @@ class Student extends Model
 {
     use HasFactory;
 
+
     protected $fillable = [
         'roll',
         'reg',

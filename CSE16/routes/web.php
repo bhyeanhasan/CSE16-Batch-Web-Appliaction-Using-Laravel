@@ -16,10 +16,10 @@ Route::get('/student_all',[ManageStudent::class,'student_all'])->name('student_a
 Route::get('/student/{roll}',[ManageStudent::class,'public_profile']);
 Route::get('/student_page/update',[ManageStudent::class,'student_update_page']);
 Route::get('post/create',[PageRoute::class,'post_page']);
-
+Route::get('/link/{id}',[ManageNotice::class,'link']);
 
 #PostRoute form theke asa value gula database e pathabe
-Route::post('post',[ManageNotice::class,'post_notice'])->name('notice_post');
+Route::post('/post/notice',[ManageNotice::class,'post_notice'])->name('notice_post');
 Route::post('student/new',[ManageStudent::class,'student_create'])->name('student_post');
 Route::post('student/edit',[ManageStudent::class,'student_edit'])->name('student_edit');
 Route::post('student_pic/edit',[ManageStudent::class,'change_profile_cover'])->name('student_pic');
@@ -27,36 +27,12 @@ Route::post('create_post',[ManagePost::class,'create_post'])->name('create_post'
 
 
 #database theke kno moddel er sob element view korbe
-<<<<<<< HEAD
-<<<<<<< HEAD
-Route::get('view_notice/{id}',[ManageNotice::class,'view_all_notice']);
-=======
-Route::get('view_notice',[ManageNotice::class,'view_all_notice'])->name('view_notice');
->>>>>>> parent of 3214e23 (last w8)
-Route::get('/view/post',[ManagePost::class,'view_all_post'])->name('view_post');
+Route::get('view_notice/{id}',[ManageNotice::class,'view_all_notice'])->middleware(['auth','verified']);
+Route::get('/view/post/{id}',[ManagePost::class,'view_all_post'])->middleware(['auth','verified']);
 
 #Database theke kicu delete korbe
 Route::get('/notice/delete/{id}',[ManageNotice::class,'delete_notice']);
 Route::get('/post/delete/{id}',[ManagePost::class,'delete_post']);
-<<<<<<< HEAD
-=======
-
-#database theke kno moddel er sob element view korbe
-Route::get('view_notice',[ManageNotice::class,'view_all_notice'])->name('view_notice');
-
-#Database theke kicu delete korbe
-Route::get('/notice/delete/{id}',[ManageNotice::class,'delete_notice']);
->>>>>>> parent of b8a90bb (view)
-=======
-Route::get('view_notice',[ManageNotice::class,'view_all_notice'])->name('view_notice');
-
-
-#Database theke kicu delete korbe
-Route::get('/notice/delete/{id}',[ManageNotice::class,'delete_notice']);
-
->>>>>>> parent of 053087f (post advance)
-=======
->>>>>>> parent of 3838786 (k)
 
 #permission ase kina seta check korbe
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

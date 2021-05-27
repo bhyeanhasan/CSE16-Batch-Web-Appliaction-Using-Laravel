@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <a href="/"><img style="height: 200px" src="{{asset("images/Batch logo.png")}}"></a>
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
@@ -15,7 +15,7 @@
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
+                <x-jet-label for="email" value="{{ __('Your CSE domain example@cse.pstu.ac.bd') }}" />
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
 

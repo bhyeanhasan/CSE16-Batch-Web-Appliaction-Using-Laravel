@@ -13,7 +13,6 @@ class Notice extends Model
         'notice_by',
         'notice_heading',
         'notice_body',
-        'notice_link',
         'notice_picture',
     ];
 }
