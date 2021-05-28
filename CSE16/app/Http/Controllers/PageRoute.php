@@ -36,6 +36,11 @@ class PageRoute extends Controller
         return view('pages.about');
     }
 
+    function calander_page()
+    {
+        return view('pages.calander');
+    }
+
     function contact_page()
     {
         return view('pages.contact');

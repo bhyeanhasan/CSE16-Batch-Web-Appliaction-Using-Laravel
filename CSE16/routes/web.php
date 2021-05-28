@@ -9,6 +9,7 @@ use App\Http\Controllers\ManagePost;
 #basic route jegula view return korbe
 Route::get('/',[PageRoute::class,'welcome_page'])->name('welcome');
 Route::get('/about',[PageRoute::class,'about_page'])->name('about');
+Route::get('/calander',[PageRoute::class,'calander_page'])->name('calander');
 Route::get('/contact',[PageRoute::class,'contact_page'])->name('contact');
 Route::get('notice/add_notice',[PageRoute::class,'add_notice_page']);
 Route::get('/student',[ManageStudent::class,'profile_check'])->name('student');

@@ -79,9 +79,10 @@
 
                     </ul>
                 </li>
-
+                <li><a href="{{route('calander')}}"><i class="fa fa-calendar" aria-hidden="true"></i> Class Calendar</a></li>
 
                 <li><a href="{{route('about')}}"><i class="fa fa-eye" aria-hidden="true"></i> Project OBOYOB</a></li>
+
                 <li><a href="{{route('contact')}}"><i class="fa fa-volume-control-phone" aria-hidden="true"></i> Contact</a></li>
             </ul>
             <!-- ################################################################################################ -->
@@ -98,14 +99,14 @@
         <div class="col-md-12">
             <marquee style="font-size:16px;"  scrollamount="6">
                 <h5 >
-                    ''' ''' অবয়ব ১৬ '''
-                    ''' কম্পিউটার বিজ্ঞান ও প্রকৌশল অনুষদ ''''
-                    ''' পটুয়াখালী বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয় '''
-                    ''' ২০১৮-১৯ সেশন '''
-                    ''' CSE-16 '''
-                    ''' Faculty of Computer Science and Engineering '''
-                    ''' Patuakhali Science and Technology University '''
-                    ''' Session 2018-2019 '''
+                    " অবয়ব ১৬ "
+                    কম্পিউটার বিজ্ঞান ও প্রকৌশল অনুষদ /
+                    পটুয়াখালী বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয় /
+                    ২০১৮-১৯ সেশন //
+                    " CSE-16 "
+                    Faculty of Computer Science and Engineering /
+                    Patuakhali Science and Technology University /
+                    Session 2018-2019 //
                 </h5>
 
             </marquee>
@@ -113,9 +114,9 @@
         </div>
 
         <div class="col-md-1 mb-5" ></div>
-        <div class="col-md-10 mb-5" >
+        <div class="col-md-12" style="text-align: center">
 
-            <img class="okok" src="{{asset("images/batch.jpg")}}">
+            <img class="okok" src="{{asset("images/onu.jpg")}}">
         </div>
 
     </div>
@@ -130,7 +131,7 @@
 
 
 {{--        Blog        --}}
-        <div class="col-md-7 blog" style="background-color: #F0F2F5">
+        <div class="col-md-7 blog mt-4" style="background-color: #F0F2F5">
             <h1 class="text-center p-3"><em class="fa fa-share-alt-square" aria-hidden="true"></em> Blog</h1>
             <div class="divider running" style="height:5px;background-color:#1E8440;margin-top: -10px;margin-bottom: 5px"></div>
             <div class="row">
@@ -194,7 +195,7 @@
         <div class="col-md-1"> </div>
 
 {{--        Notice      --}}
-        <div class="col-md-4 notice" style="background-color: #F0F2F5">
+        <div class="col-md-4 notice mt-4" style="background-color: #F0F2F5">
             <h1 class="text-center p-3"><i class="fa fa-bell" aria-hidden="true"></i> Notice</h1>
             <div class="divider running" style="height:5px;background-color:#1E8440;margin-top: -10px;margin-bottom: 5px"></div>
             <div class="row">
@@ -290,7 +291,7 @@
             <li class="list-inline-item"><a href="#">Project OBOYOB</a></li>
         </ul>
 
-        <p class="copyright">B H Yean Hasan © 2020</p>
+        <p class="copyright">B H Yean Hasan © 2021</p>
     </footer>
 </div>
 <!-- ################################################################################################ -->

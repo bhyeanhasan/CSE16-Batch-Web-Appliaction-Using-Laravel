@@ -80,8 +80,10 @@
                     </ul>
                 </li>
 
+                <li><a href="{{route('calander')}}"><i class="fa fa-calendar" aria-hidden="true"></i> Class Calendar</a></li>
 
                 <li><a href="{{route('about')}}"><i class="fa fa-eye" aria-hidden="true"></i> Project OBOYOB</a></li>
+
                 <li><a href="{{route('contact')}}"><i class="fa fa-volume-control-phone" aria-hidden="true"></i> Contact</a></li>
             </ul>
             <!-- ################################################################################################ -->

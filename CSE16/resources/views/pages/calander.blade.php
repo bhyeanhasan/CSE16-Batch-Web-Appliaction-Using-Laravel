@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -113,9 +115,8 @@
 
         </div>
         <div class="col-md-12 text-center">
-            <h1>If you have any quary or suggestion</h1>
-            <h2>You can Mail to</h2>
-            <p style="font-family: Arial; font-size: 20px">bhyean16@cse.pstu.ac.bd or bhyean@gmail.com</p>
+            <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23EF6C00&amp;ctz=Asia%2FDhaka&amp;src=bWFuMTloa2psYWlla3N0M2J2ODFuc2QzMDRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=Y2xhc3Nyb29tMTE2MDQxNjc4ODIyNTkzNzAzMDY5QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%23F09300&amp;color=%230047a8&amp;showTitle=1&amp;showNav=1&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;showDate=0" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
         </div>
 
 
