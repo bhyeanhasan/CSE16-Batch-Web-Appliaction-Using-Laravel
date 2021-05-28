@@ -1,2 +1,3 @@
 # CSE16 Batch Web App
- CSE 16
+
+[Live View the application](http://cse16.bhyeanhasan.me/)
